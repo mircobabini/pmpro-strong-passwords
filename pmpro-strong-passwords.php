@@ -26,6 +26,11 @@ function pmprosp_password_strength_scripts_and_styles() {
 	if ( is_user_logged_in() ) {
 		return;
 	}
+	
+	// Don't load this script at all if post is not defined.
+	if ( ! $post ) {
+		return;
+	}
 
 	// Only load on certain PMPro pages.
 	if ( is_page( $pmpro_pages['checkout'] ) || strpos( $post->post_content, '[pmpro_signup' ) !== false ) {
